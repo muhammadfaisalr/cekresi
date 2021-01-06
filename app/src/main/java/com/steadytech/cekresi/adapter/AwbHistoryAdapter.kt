@@ -1,39 +1,69 @@
 package com.steadytech.cekresi.adapter
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.steadytech.cekresi.R
+import com.steadytech.cekresi.bottomsheet.CheckAwbBottomSheetFragment
+import com.steadytech.cekresi.constant.Constant
 import com.steadytech.cekresi.helper.FontsHelper
-import com.steadytech.cekresi.model.awb.AWBHistory
+import com.steadytech.cekresi.helper.GeneralHelper
+import com.steadytech.cekresi.model.realm.AWBLocal
+import io.realm.RealmResults
 import kotlinx.android.extensions.LayoutContainer
 
-class AwbHistoryAdapter(private val awb: ArrayList<AWBHistory>, private val activity: Activity) : RecyclerView.Adapter<AwbHistoryAdapter.ViewHolder>() {
+/**
+Created By Faisal | Steady Tech.
+------------ 30-12-2020 ------------
+-------- Cek Resi --------
+ **/
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AwbHistoryAdapter.ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_tracking_history, parent, false))
+class AwbHistoryAdapter(private val airwaybills : RealmResults<AWBLocal>, private val activity : AppCompatActivity, private val canSave : Boolean) : RecyclerView.Adapter<AwbHistoryAdapter.ViewHolder>() {
+
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): AwbHistoryAdapter.ViewHolder {
+        return  ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_history, parent, false))
     }
 
     override fun getItemCount(): Int {
-        return this.awb.size
+        return this.airwaybills.size
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onBindViewHolder(holder: AwbHistoryAdapter.ViewHolder, position: Int) {
-        val awbHistory = awb[position]
+        val awbLocal = this.airwaybills[position]
 
-        holder.textDate.text = awbHistory.date
-        holder.textDate.typeface = FontsHelper.JOST.medium(this.activity)
-        holder.textDesc.text = awbHistory.desc
-        holder.textDesc.typeface = FontsHelper.JOST.regular(this.activity)
+        holder.textAwbNumber.text = awbLocal!!.awbNumber
+
+        GeneralHelper.setCourierImage(holder.imageLogo, awbLocal.courierCode, activity)
+
+        holder.textAwbNumber.typeface = FontsHelper.JOST.medium(this.activity)
+
+        holder.itemView.setOnClickListener {
+            val checkAwbBottomSheetFragment = CheckAwbBottomSheetFragment()
+            val bundle = Bundle()
+
+            bundle.putString(Constant.KEY.COURIER_CODE, awbLocal.courierCode)
+            bundle.putString(Constant.KEY.AWB_NUMBER, awbLocal.awbNumber)
+            bundle.putBoolean(Constant.KEY.COMMON_ARGUMENT, canSave)
+
+            checkAwbBottomSheetFragment.arguments = bundle
+            checkAwbBottomSheetFragment.show(this.activity.supportFragmentManager, "CheckAwbFragment")
+        }
     }
-
 
     inner class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
-        var textDate : TextView = containerView.findViewById(R.id.textDate)
-        var textDesc : TextView = containerView.findViewById(R.id.textDesc)
+        var textAwbNumber : TextView = containerView.findViewById(R.id.textAwbNumber)
+        var imageLogo : ImageView = containerView.findViewById(R.id.imageLogo)
     }
-
 }

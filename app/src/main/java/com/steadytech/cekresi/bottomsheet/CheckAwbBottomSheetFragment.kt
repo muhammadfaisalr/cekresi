@@ -9,20 +9,24 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.steadytech.cekresi.R
-import com.steadytech.cekresi.adapter.AwbHistoryAdapter
+import com.steadytech.cekresi.adapter.AwbTrackingAdapter
 import com.steadytech.cekresi.builder.RetrofitBuilder
 import com.steadytech.cekresi.constant.Constant
 import com.steadytech.cekresi.helper.FontsHelper
 import com.steadytech.cekresi.model.awb.AWB
+import com.steadytech.cekresi.model.realm.AWBLocal
 import com.steadytech.cekresi.service.RetrofitService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import io.realm.Realm
+import io.realm.kotlin.where
 
 
 class CheckAwbBottomSheetFragment : BottomSheetDialogFragment(), View.OnClickListener {
@@ -51,8 +55,10 @@ class CheckAwbBottomSheetFragment : BottomSheetDialogFragment(), View.OnClickLis
 
     lateinit var tracks : ArrayList<AWB>
 
-    lateinit var awbHistoryAdapter : AwbHistoryAdapter
+    lateinit var awbHistoryAdapter : AwbTrackingAdapter
     lateinit var layoutManager : LinearLayoutManager
+
+    lateinit var realm: Realm
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,6 +77,8 @@ class CheckAwbBottomSheetFragment : BottomSheetDialogFragment(), View.OnClickLis
     }
 
     private fun init(view: View) {
+        this.realm = Realm.getDefaultInstance()
+
         this.courierCode = this.arguments!!.getString(Constant.KEY.COURIER_CODE, null)
         this.awbNumber = this.arguments!!.getString(Constant.KEY.AWB_NUMBER, null)
 
@@ -130,7 +138,7 @@ class CheckAwbBottomSheetFragment : BottomSheetDialogFragment(), View.OnClickLis
 
         val retrofit = RetrofitBuilder.checkAwb().create(RetrofitService::class.java)
         CompositeDisposable().add(
-            retrofit.getAwbDetail("a4217141d198d98045b69a4006bdec633e5d5931e5b78eb87f4b7b0eadsasdhais-5", this.courierCode, this.awbNumber)
+            retrofit.getAwbDetail("YOUR_API_KEY", this.courierCode, this.awbNumber)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(
@@ -141,8 +149,14 @@ class CheckAwbBottomSheetFragment : BottomSheetDialogFragment(), View.OnClickLis
 
                         this.linearContent.visibility = View.VISIBLE
                         this.linearEmpty.visibility = View.GONE
-                        this.imageSave.visibility = View.VISIBLE
                         this.lottieLoading.visibility = View.GONE
+                        val isWasSaved = this.validate()
+
+                        if (isWasSaved){
+                            this.imageSave.visibility = View.GONE
+                        }else{
+                            this.imageSave.visibility = View.VISIBLE
+                        }
 
                         //Start Get Detail AWB
                         val awbDetail = it.data.detail
@@ -159,7 +173,7 @@ class CheckAwbBottomSheetFragment : BottomSheetDialogFragment(), View.OnClickLis
                         //End Get Summary AWB
 
                         //Start Get History AWB
-                        this.awbHistoryAdapter = AwbHistoryAdapter(it.data.history, this.activity!!)
+                        this.awbHistoryAdapter = AwbTrackingAdapter(it.data.history, this.activity!!)
                         this.recyclerTrack.adapter = this.awbHistoryAdapter
                         this.recyclerTrack.layoutManager = layoutManager
                         //End Get History AWB
@@ -178,10 +192,30 @@ class CheckAwbBottomSheetFragment : BottomSheetDialogFragment(), View.OnClickLis
         )
     }
 
+
+    private fun validate() : Boolean {
+        val awbLocal = realm.where<AWBLocal>().equalTo("awbNumber", this.awbNumber).findFirst()
+
+        return awbLocal!!.isSaved
+    }
+
     override fun onClick(view: View?) {
         if (view!! == this.imageClose){
             this.dismiss()
+        }else if (view == this.imageSave){
+            this.save()
         }
+    }
+
+    private fun save() {
+        this.realm.executeTransaction{ transaction ->
+            val awbLocal = transaction.where<AWBLocal>().equalTo("awbNumber", this.awbNumber).findFirst()
+            awbLocal!!.isSaved = true
+            transaction.copyToRealmOrUpdate(awbLocal)
+        }
+
+        Toast.makeText(this.activity!!, "Berhasil Disimpan!", Toast.LENGTH_SHORT).show()
+        this.imageSave.visibility == View.GONE
     }
 
 }

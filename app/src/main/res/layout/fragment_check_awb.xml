@@ -1,52 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".fragment.CheckAwbFragment">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        android:layout_margin="16dp">
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp">
 
         <LinearLayout
-            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginBottom="16dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="16dp"
                 android:hint="@string/select_courier">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:editable="false"
-                    android:clickable="true"
-                    android:focusable="false"
+                    android:id="@+id/inputCourier"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/inputCourier"/>
+                    android:clickable="true"
+                    android:editable="false"
+                    android:focusable="false" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:hint="@string/awb_number">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputAWB"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/inputAWB"/>
+                    android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,24 +57,51 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/track_package"/>
+                android:text="@string/track_package" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardTracking"
-        android:visibility="gone"
+    <androidx.core.widget.NestedScrollView
+        android:elevation="4dp"
+        android:layout_below="@id/cardView"
+        android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:cardCornerRadius="8dp"
-        android:layout_margin="16dp">
-
-        <androidx.recyclerview.widget.RecyclerView
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/recyclerView"/>
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/textMightYouLike"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/might_you_like"
+                android:textSize="16sp" />
 
-</LinearLayout>
+            <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adView"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                ads:adSize="MEDIUM_RECTANGLE"
+                ads:adUnitId="@string/banned_ad_unit_id"></com.google.android.gms.ads.AdView>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <TextView
+        android:id="@+id/textBuildWithLove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@string/build_with_love_from_steady_tech"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</RelativeLayout>

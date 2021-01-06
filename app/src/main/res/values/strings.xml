@@ -11,4 +11,11 @@
     <string name="receiver">Penerima</string>
     <string name="save">Simpan</string>
     <string name="result_not_found">Hasil Tidak Ditemukan</string>
+    <string name="clear_all">Hapus Semua</string>
+    <string name="input_awb">Masukkan No Resi</string>
+    <string name="build_with_love_from_steady_tech">Build With ♡ From Steady Tech.</string>
+    <string name="might_you_like">Yang Mungkin Kamu Suka</string>
+    <string name="banned_ad_unit_id" >ca-app-pub-7607800827137258/3429919446    </string>
+    <string name="history">Histori</string>
+    <string name="see_all">Lihat Semua</string>
 </resources>

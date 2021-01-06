@@ -1,38 +1,27 @@
 package com.steadytech.cekresi.activity
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.FrameLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.FragmentTransitionImpl
-import com.ahmed3elshaer.selectionbottomsheet.SelectionBuilder
 import com.google.android.material.tabs.TabLayout
-import com.nestoleh.bottomsheetspinner.BottomSheetSpinner
-import com.nestoleh.bottomsheetspinner.adapter.BottomSheetSpinnerAdapter
-import com.nestoleh.bottomsheetspinner.adapter.BottomSheetSpinnerItemViewHolder
 import com.steadytech.cekresi.R
-import com.steadytech.cekresi.builder.RetrofitBuilder
+import com.steadytech.cekresi.constant.Constant
 import com.steadytech.cekresi.fragment.CheckAwbFragment
+import com.steadytech.cekresi.fragment.FavoriteFragment
 import com.steadytech.cekresi.fragment.HistoryFragment
-import com.steadytech.cekresi.service.RetrofitService
-import com.tiper.MaterialSpinner
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_main.*
+import com.steadytech.cekresi.helper.FontsHelper
 
 class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
 
     lateinit var tabLayout : TabLayout
     lateinit var frameLayout : FrameLayout
+
+    lateinit var textTitle : TextView
+    lateinit var textSubtitle : TextView
 
     lateinit var fragment : Fragment
     lateinit var fragmentManager: FragmentManager
@@ -46,6 +35,12 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
     }
 
     private fun init() {
+        this.textTitle = findViewById(R.id.textTitle)
+        this.textTitle.typeface = FontsHelper.JOST.medium(this)
+
+        this.textSubtitle = findViewById(R.id.textSubtitle)
+        this.textSubtitle.typeface = FontsHelper.JOST.regular(this)
+
         this.tabLayout = findViewById(R.id.tabs)
         this.frameLayout = findViewById(R.id.frameLayout)
         this.fragment = CheckAwbFragment()
@@ -68,10 +63,13 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
 
     override fun onTabSelected(tab: TabLayout.Tab?) {
         tab!!
+        var bundle = Bundle()
         if (tab.position == 0){
             this.fragment = CheckAwbFragment()
         }else if (tab.position == 1){
             this.fragment = HistoryFragment()
+        }else if (tab.position == 2){
+            this.fragment = FavoriteFragment()
         }
 
         val manager : FragmentManager = supportFragmentManager
