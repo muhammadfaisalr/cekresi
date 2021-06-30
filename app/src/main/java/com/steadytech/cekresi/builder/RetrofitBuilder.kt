@@ -13,9 +13,17 @@ Created By : Steady Tech.
 
 class RetrofitBuilder {
     companion object{
-        fun checkAwb() : Retrofit{
+        fun baseBinderbyte() : Retrofit{
             return Retrofit.Builder()
-                .baseUrl(Constant.URL.baseURL)
+                .baseUrl(Constant.URL.BINDERBYTE_API_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build()
+        }
+
+        fun baseRajaOngkir() : Retrofit{
+            return Retrofit.Builder()
+                .baseUrl(Constant.URL.RAJAONGKIR_API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()

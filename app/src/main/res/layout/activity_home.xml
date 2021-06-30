@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.HomeActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/bottom_radius">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:text="@string/app_name"
+                android:textColor="@color/colorWhite"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/textSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="24dp"
+                android:text="Cara mudah lacak paket kamu"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:cardCornerRadius="8dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputAwbNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawableStart="@drawable/ic_package_vector"
+                        android:drawablePadding="16dp"
+                        android:hint="@string/input_awb_number" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonTrack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/track_package"
+                android:textColor="@color/colorPrimary"
+                app:backgroundTint="@color/colorWhite"
+                app:cornerRadius="8dp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textOther"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/other"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp" />
+
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardHistory"
+                    android:layout_width="140dp"
+                    android:layout_height="160dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ic_history" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textHistory"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="32dp"
+                                android:text="@string/history"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/textTotalHistory"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="0 Hasil"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:foreground="?attr/selectableItemBackground"
+                    android:id="@+id/cardSaved"
+                    android:layout_width="140dp"
+                    android:layout_height="160dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ic_saved" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textSaved"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="32dp"
+                                android:text="@string/saved"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/textTotalSaved"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="0 Hasil"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardCostCheck"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:layout_width="140dp"
+                    android:layout_height="160dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ic_cost_check" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textCostCheck"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="32dp"
+                                android:text="@string/cost_check"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="140dp"
+                    android:layout_height="160dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ic_info" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textAboutApp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="32dp"
+                                android:text="@string/about_app"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

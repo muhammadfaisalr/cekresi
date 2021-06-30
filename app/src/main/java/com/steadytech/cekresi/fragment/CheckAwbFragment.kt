@@ -76,16 +76,16 @@ class CheckAwbFragment : Fragment(), View.OnClickListener, Realm.Transaction {
     }
 
     private fun init(view: View) {
-        this.adView = view.findViewById(R.id.adView)
+//        this.adView = view.findViewById(R.id.adView)
 
         this.inputCourier = view.findViewById(R.id.inputCourier)
         this.inputCourier.typeface =  FontsHelper.JOST.regular(this.activity!!)
 
-        this.textBuildWithLove = view.findViewById(R.id.textBuildWithLove)
-        this.textBuildWithLove.typeface = FontsHelper.JOST.medium(this.activity!!)
+//        this.textBuildWithLove = view.findViewById(R.id.textBuildWithLove)
+//        this.textBuildWithLove.typeface = FontsHelper.JOST.medium(this.activity!!)
 
-        this.textMightYouLike = view.findViewById(R.id.textMightYouLike)
-        this.textMightYouLike.typeface = FontsHelper.JOST.medium(this.activity!!)
+//        this.textMightYouLike = view.findViewById(R.id.textMightYouLike)
+//        this.textMightYouLike.typeface = FontsHelper.JOST.medium(this.activity!!)
 
         this.inputAWB = view.findViewById(R.id.inputAWB)
         this.inputAWB.typeface = FontsHelper.JOST.regular(this.activity!!)
@@ -166,13 +166,13 @@ class CheckAwbFragment : Fragment(), View.OnClickListener, Realm.Transaction {
     override fun execute(realm: Realm) {
         var awbLocal = realm.where<AWBLocal>().equalTo("awbNumber", this.inputAWB.text.toString()).findFirst()
 
-        if (awbLocal == null){
-            awbLocal = realm.createObject(this.inputAWB.text.toString())
+            if (awbLocal == null){
+                awbLocal = realm.createObject(this.inputAWB.text.toString())
 
-            awbLocal.courierCode = this.courierCode
-            awbLocal.courierName = this.courierName
+                awbLocal.courierCode = this.courierCode
+                awbLocal.courierName = this.courierName
 
-            realm.copyToRealmOrUpdate(awbLocal)
+                realm.copyToRealmOrUpdate(awbLocal)
         }
     }
 }

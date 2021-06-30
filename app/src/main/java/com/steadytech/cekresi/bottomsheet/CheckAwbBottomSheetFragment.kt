@@ -136,7 +136,7 @@ class CheckAwbBottomSheetFragment : BottomSheetDialogFragment(), View.OnClickLis
             this.tracks.clear()
         }
 
-        val retrofit = RetrofitBuilder.checkAwb().create(RetrofitService::class.java)
+        val retrofit = RetrofitBuilder.baseBinderbyte().create(RetrofitService::class.java)
         CompositeDisposable().add(
             retrofit.getAwbDetail("YOUR_API_KEY", this.courierCode, this.awbNumber)
                 .observeOn(AndroidSchedulers.mainThread())

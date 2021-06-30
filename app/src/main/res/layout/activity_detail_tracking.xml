@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.DetailTrackingActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_alignParentStart="true"
+                android:id="@+id/imageBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foreground="?attr/selectableItemBackground"
+                android:padding="16dp"
+                android:src="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/textSave"
+                android:foreground="?attr/selectableItemBackground"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:textAllCaps="true"
+                android:layout_alignParentEnd="true"
+                android:padding="16dp"
+                android:textColor="@color/colorPrimary"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                app:drawableStartCompat="@drawable/ic_save_24"
+                app:drawableTint="@color/colorPrimary" />
+        </RelativeLayout>
+
+
+
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:text="@string/tracking"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textAwbNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/tracking"
+            android:layout_marginBottom="8dp"
+            android:textSize="14sp" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/textSenderTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sender"
+                            android:textColor="@color/colorWhite"
+                            android:textStyle="italic" />
+
+                        <TextView
+                            android:id="@+id/textSender"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/sender"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textOrigin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Sedang Memuat Data..."
+                            android:textColor="@color/colorWhite"
+
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/textReceiverTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:text="@string/receiver"
+                            android:textColor="@color/colorWhite"
+                            android:textStyle="italic" />
+
+                        <TextView
+                            android:id="@+id/textReceiver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/receiver"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textDestination"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Sedang Memuat Data..."
+                            android:textColor="@color/colorWhite"
+                            android:textSize="16sp" />
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/textCourier"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="WAHANA [REGULAR]"
+                        android:textColor="@color/colorBlack" />
+
+                    <TextView
+                        android:id="@+id/textStatus"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="DELIVERED"
+                        android:textColor="@color/colorPrimaryDark" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="Detail"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonFinish"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    app:backgroundTint="@color/inactiveColor"
+                    android:text="@string/finish"
+                    android:textColor="@color/darkerInactiveColor"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/linearLoading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieLoading"
+                android:layout_width="256dp"
+                android:layout_height="256dp"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="loading.json"
+                app:lottie_loop="true" />
+
+            <TextView
+                android:id="@+id/textLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/on_load_data" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

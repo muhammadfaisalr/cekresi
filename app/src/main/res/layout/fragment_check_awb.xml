@@ -74,34 +74,34 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
-                android:id="@+id/textMightYouLike"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/might_you_like"
-                android:textSize="16sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/textMightYouLike"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/might_you_like"-->
+<!--                android:textSize="16sp" />-->
 
-            <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/adView"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                ads:adSize="MEDIUM_RECTANGLE"
-                ads:adUnitId="@string/banned_ad_unit_id"></com.google.android.gms.ads.AdView>
+<!--            <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+<!--                android:id="@+id/adView"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="16dp"-->
+<!--                ads:adSize="MEDIUM_RECTANGLE"-->
+<!--                ads:adUnitId="@string/banned_ad_unit_id"></com.google.android.gms.ads.AdView>-->
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-    <TextView
-        android:id="@+id/textBuildWithLove"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:padding="16dp"
-        android:text="@string/build_with_love_from_steady_tech"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/textBuildWithLove"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="16dp"-->
+<!--        android:text="@string/build_with_love_from_steady_tech"-->
+<!--        android:textColor="@color/colorPrimaryDark"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
 
 </RelativeLayout>

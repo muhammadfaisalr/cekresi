@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ListCourierActivity">
+
+    <ImageView
+        android:id="@+id/imageBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/textSelectCourier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/select_courier"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_marginTop="4dp"
+        android:id="@+id/textAwb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="No Resi : 32010" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerView"/>
+
+</LinearLayout>

@@ -111,7 +111,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:hint="@string/input_awb" />
+                            android:hint="@string/input_awb_number" />
 
                         <ImageView
                             android:foreground="?attr/selectableItemBackground"
@@ -149,15 +149,15 @@
     </androidx.core.widget.NestedScrollView>
 
 
-    <TextView
-        android:id="@+id/textBuildWithLove"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:padding="16dp"
-        android:text="@string/build_with_love_from_steady_tech"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/textBuildWithLove"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="16dp"-->
+<!--        android:text="@string/build_with_love_from_steady_tech"-->
+<!--        android:textColor="@color/colorPrimaryDark"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
 
 </RelativeLayout>

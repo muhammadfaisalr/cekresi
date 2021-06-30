@@ -4,6 +4,7 @@ import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.steadytech.cekresi.R
@@ -24,6 +25,10 @@ class AwbTrackingAdapter(private val awb: ArrayList<AWBHistory>, private val act
     override fun onBindViewHolder(holder: AwbTrackingAdapter.ViewHolder, position: Int) {
         val awbHistory = awb[position]
 
+        if (position != 0){
+            holder.imageStatus.setImageDrawable(activity.resources.getDrawable(R.drawable.ic_inactive_status_png, null))
+        }
+
         holder.textDate.text = awbHistory.date
         holder.textDate.typeface = FontsHelper.JOST.medium(this.activity)
         holder.textDesc.text = awbHistory.desc
@@ -34,6 +39,7 @@ class AwbTrackingAdapter(private val awb: ArrayList<AWBHistory>, private val act
     inner class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
         var textDate : TextView = containerView.findViewById(R.id.textDate)
         var textDesc : TextView = containerView.findViewById(R.id.textDesc)
+        var imageStatus : ImageView = containerView.findViewById(R.id.imageStatus)
     }
 
 }
